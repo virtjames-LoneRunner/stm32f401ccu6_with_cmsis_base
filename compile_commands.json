@@ -1,0 +1,46 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mthumb",
+      "-O0",
+      "-g3",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DSTM32F401xC",
+      "-I./CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./CMSIS/Core/Include",
+      "-c",
+      "--specs=nosys.specs",
+      "-o",
+      "build/main.o",
+      "src/main.c"
+    ],
+    "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/main.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mthumb",
+      "-O0",
+      "-g3",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DSTM32F401xC",
+      "-I./CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./CMSIS/Core/Include",
+      "-c",
+      "--specs=nosys.specs",
+      "-o",
+      "build/startup_stm32.o",
+      "src/startup_stm32.c"
+    ],
+    "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/startup_stm32.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/startup_stm32.o"
+  }
+]
