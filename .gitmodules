@@ -1,3 +1,3 @@
-[submodule "external/external/printf"]
-	path = external/external/printf
+[submodule "external/printf"]
+	path = external/printf
 	url = https://github.com/mpaland/printf.git
