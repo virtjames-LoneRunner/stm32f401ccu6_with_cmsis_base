@@ -1,6 +1,12 @@
 # Toolchain
+<<<<<<< HEAD
 CC = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
+=======
+TOOLDIR = ${TOOLS_PATH}
+CC = ${TOOLSDIR}/arm-none-eabi-gcc
+OBJCOPY = ${TOOLSDIR}/arm-none-eabi-objcopy
+>>>>>>> f3704e1 (build(makefile): specifiy the tools path with an env variable)
 
 # Flags for a Cortex-M4 (e.g., STM32F4)
 CFLAGS = -mcpu=cortex-m4 -mthumb -O0 -g3 -ffunction-sections -fdata-sections
@@ -19,7 +25,7 @@ CPPCHECK = cppcheck
 
 all: main.bin
 
-main.elf: $(OBJS)
+main.elf: $(OBS)
 	$(CC) $(CFLAGS) $(CADDFLAGS) $(OBJS) -o $(BUILDDIR)/main.elf $(LDFLAGS)
 
 $(BUILDDIR)/%.o: src/%.c
