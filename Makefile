@@ -1,7 +1,13 @@
 # Toolchain
-TOOL_DIR = ~/dev/arm-gnu-toolchain-15.2/bin
-CC = $(TOOL_DIR)/arm-none-eabi-gcc
-OBJCOPY = $(TOOL_DIR)/arm-none-eabi-objcopy
+ifdef TOOLS_PATH
+	export PATH := $(TOOLS_PATH)/bin:$(PATH)
+	CC = $(TOOLS_PATH)/arm-none-eabi-gcc
+	OBJCOPY = $(TOOLS_PATH)/arm-none-eabi-objcopy
+else
+	CC = arm-none-eabi-gcc
+	OBJCOPY = arm-none-eabi-objcopy
+endif
+
 
 # Flags for a Cortex-M4 (e.g., STM32F4)
 CFLAGS = -mcpu=cortex-m4 -mthumb -O0 -g3 -ffunction-sections -fdata-sections
@@ -10,7 +16,7 @@ CADDFLAGS = -DSTM32F401xC \
            -I./CMSIS/Core/Include
 
 LINKER_FILE = stm32_ls.ld
-LDFLAGS = -T $(LINKER_FILE) -Wl,--gc-sections --specs=nosys.specs -nostdlib # You'll need this file from the CMSIS repo
+LDFLAGS = -T ${LINKER_FILE} -Wl,--gc-sections -nostdlib\
 
 BUILDDIR = build
 SRCS = $(wildcard src/*.c)
@@ -24,7 +30,8 @@ main.elf: $(OBJS)
 	$(CC) $(CFLAGS) $(CADDFLAGS) $(OBJS) -o $(BUILDDIR)/main.elf $(LDFLAGS)
 
 $(BUILDDIR)/%.o: src/%.c
-	$(CC) $(CFLAGS) $(CADDFLAGS) -c $< -o $@ $(LDFLAGS)
+	@mkdir -p build
+	$(CC) $(CFLAGS) $(CADDFLAGS) -c $< -o $@
 
 main.bin: main.elf
 	$(OBJCOPY) -O binary $(BUILDDIR)/main.elf $(BUILDDIR)/main.bin
