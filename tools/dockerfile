@@ -8,5 +8,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
 # Create a non-root user named "ubuntu"
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo \
     -u 1001 ubuntu
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      gcc-arm-none-eabi \
+      binutils-arm-none-eabi \
+    && rm -rf /usr/lib/arm-none-eabi/newlib \
+    && rm -rf /var/lib/apt/lists/*
+
 USER ubuntu
 WORKDIR /home/ubuntu
