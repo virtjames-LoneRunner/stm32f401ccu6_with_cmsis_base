@@ -1,13 +1,6 @@
 # Toolchain
-ifdef TOOLS_PATH
-	export PATH := $(TOOLS_PATH)/bin:$(PATH)
-	CC = $(TOOLS_PATH)/arm-none-eabi-gcc
-	OBJCOPY = $(TOOLS_PATH)/arm-none-eabi-objcopy
-else
-	CC = arm-none-eabi-gcc
-	OBJCOPY = arm-none-eabi-objcopy
-endif
-
+CC = arm-none-eabi-gcc
+OBJCOPY = arm-none-eabi-objcopy
 
 # Flags for a Cortex-M4 (e.g., STM32F4)
 CFLAGS = -mcpu=cortex-m4 -mthumb -O0 -g3 -ffunction-sections -fdata-sections
@@ -52,4 +45,6 @@ cppcheck:
 		--inline-suppr \
 		$(CADDFLAGS) \
 		$(SRCS) \
+		--suppress=missingIncludeSystem \
+		--suppress=comparePointers \
 		-i src/startup_stm32.c
