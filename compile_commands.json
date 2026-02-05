@@ -9,10 +9,11 @@
       "-ffunction-sections",
       "-fdata-sections",
       "-DSTM32F401xC",
-      "-I./CMSIS/Device/ST/STM32F4xx/Include",
-      "-I./CMSIS/Core/Include",
+      "-I./external/CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./external/CMSIS/Core/Include",
+      "-I./src/common",
+      "-I./src/drivers",
       "-c",
-      "--specs=nosys.specs",
       "-o",
       "build/main.o",
       "src/main.c"
@@ -31,10 +32,11 @@
       "-ffunction-sections",
       "-fdata-sections",
       "-DSTM32F401xC",
-      "-I./CMSIS/Device/ST/STM32F4xx/Include",
-      "-I./CMSIS/Core/Include",
+      "-I./external/CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./external/CMSIS/Core/Include",
+      "-I./src/common",
+      "-I./src/drivers",
       "-c",
-      "--specs=nosys.specs",
       "-o",
       "build/startup_stm32.o",
       "src/startup_stm32.c"
@@ -42,5 +44,28 @@
     "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
     "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/startup_stm32.c",
     "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/startup_stm32.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mthumb",
+      "-O0",
+      "-g3",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DSTM32F401xC",
+      "-I./external/CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./external/CMSIS/Core/Include",
+      "-I./src/common",
+      "-I./src/drivers",
+      "-c",
+      "-o",
+      "build/drivers/io.o",
+      "src/drivers/io.c"
+    ],
+    "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/drivers/io.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/drivers/io.o"
   }
 ]

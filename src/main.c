@@ -1,6 +1,6 @@
 #include "stm32f4xx.h"
 
-int main(void) {
+void main(void) {
     while(1) {
     }
 }
