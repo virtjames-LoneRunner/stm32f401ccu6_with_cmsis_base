@@ -9,19 +9,24 @@ CADDFLAGS = -DSTM32F401xC \
             -I./external/CMSIS/Core/Include \
 						-I./external/printf \
 					  -I./src/common \
-					  -I./src/drivers
+					  -I./src/drivers \
+					  -I./src/app 
 
 LINKER_FILE = stm32_ls.ld
 LDFLAGS = -T ${LINKER_FILE} -Wl,--gc-sections -nostdlib
 
 BUILDDIR = build
-SRCS_WITH_HEADERS = src/drivers/io.c
+SRCS_WITH_HEADERS = src/drivers/io.c \
+										src/drivers/rcc.c \
+										src/test/init.test.c
 
 SRCS = $(wildcard src/*.c) \
+			 src/common/utils.c \
 			 $(SRCS_WITH_HEADERS)
 
 HEADERS = $(SRCS_WITH_HEADERS:.c=.h) \
 					src/common/defines.h \
+					src/test/blink.test.h 
 
 OBJS = $(patsubst src/%.c, $(BUILDDIR)/%.o, $(SRCS))
 
@@ -33,7 +38,7 @@ main.elf: $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) $(CADDFLAGS) $(OBJS) -o $(BUILDDIR)/main.elf $(LDFLAGS)
 
 $(BUILDDIR)/%.o: src/%.c
-	@mkdir -p build build/drivers build/common build/app
+	@mkdir -p build build/drivers build/common build/app build/test
 	$(CC) $(CFLAGS) $(CADDFLAGS) -c $< -o $@
 
 main.bin: main.elf
@@ -58,6 +63,7 @@ cppcheck:
 		-i./external/printf \
 		--suppress=*:src/startup_stm32.c \
 		--suppress=missingInclude \
+		--suppress=missingIncludeSystem \
 		--suppress=unusedFunction \
 		$(SRCS) 
 
