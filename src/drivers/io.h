@@ -6,13 +6,33 @@
 
 typedef enum {
   // This will be multiplied by 2 to get position in GPIOx_MODER
+  IO0 = 0,
   IO1 = 1U, 
   IO2,  IO3,  IO4,
   IO5,  IO6,  IO7,  
   IO8,  IO9,  IO10, 
   IO11, IO12, IO13, 
-  IO14, IO15, IO16,
+  IO14, IO15,
 } io_mode_pin;
+
+typedef enum {
+  IO_MASK_0           = (1U << IO0),
+  IO_MASK_1           = (1U << IO1),
+  IO_MASK_2           = (1U << IO2),
+  IO_MASK_3           = (1U << IO3),
+  IO_MASK_4           = (1U << IO4),
+  IO_MASK_5           = (1U << IO5),
+  IO_MASK_6           = (1U << IO6),
+  IO_MASK_7           = (1U << IO7),
+  IO_MASK_8           = (1U << IO8),
+  IO_MASK_9           = (1U << IO9),
+  IO_MASK_10          = (1U << IO10),
+  IO_MASK_11          = (1U << IO11),
+  IO_MASK_12          = (1U << IO12),
+  IO_MASK_13          = (1U << IO13),
+  IO_MASK_14          = (1U << IO14),
+  IO_MASK_15          = (1U << IO15),
+} io_pin_mask_e;
 
 typedef enum
 {
@@ -87,7 +107,7 @@ void io_toggle_pin(GPIO_TypeDef *port, const uint32_t pin);
 void io_set_select();       // Determines the pin function i.e. GPIO, SPI, I2C, etc.
 void io_set_direction();    // Set whether input or output
 void io_set_resistor();     // Set whether to enable internal pull-up or pull-down
-void io_set_out();          // Set output value HIGH or LOW
+void io_set_out(GPIO_TypeDef *port, const uint32_t pin_mask, const io_out_e state);  // Set output value HIGH or LOW
 io_in_e io_get_input();     // Get the pin value
 
 
