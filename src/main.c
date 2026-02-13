@@ -1,4 +1,3 @@
-#include "stm32f4xx.h"
 #include "test/init.test.h"
 // #include "test/blink.test.h"
 

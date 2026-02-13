@@ -3,6 +3,7 @@
 
 #include "stm32f4xx.h"
 #include "rcc.h"
+#include "io.h"
 
 void delay(volatile uint32_t count);
 void init_test();
