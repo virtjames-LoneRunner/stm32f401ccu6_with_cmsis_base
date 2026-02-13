@@ -1,5 +1,4 @@
 #include "io.h"
-#include "stm32f401xc.h"
 
 void io_configure_pin(GPIO_TypeDef *port, const uint32_t pin, const io_pin_config_t *config) {
   port->MODER &= ~(3U << (pin * 2U));
@@ -22,6 +21,8 @@ void io_configure_pin(GPIO_TypeDef *port, const uint32_t pin, const io_pin_confi
     port->AFR[idx] &= ~(0xFU << shift);
     port->AFR[idx] |= (config->altf << shift);
   }
+
+  // TODO: Lock the pin configuration
 }
 
 void io_toggle_pin(GPIO_TypeDef *port, const uint32_t pin) {

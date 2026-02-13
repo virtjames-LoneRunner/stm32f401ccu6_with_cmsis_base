@@ -5,17 +5,11 @@
 #include <stdbool.h>
 
 #include "defines.h"
-#include "stm32f401xc.h"
+#include "flash.h"
+#include "pwr.h"
 
 #define RCC_CFGR_PLLSRC_HSI_CLK 0x0
 #define RCC_CFGR_PLLSRC_HSE_CLK 0x1
-
-typedef enum {
-  PWR_SCALE3_RES,
-  PWR_SCALE3,
-  PWR_SCALE2,
-  PWR_SCALE1,
-} voltage_scale_e;
 
 typedef enum {
   RCC_HSE_CONFIG_3V3_84MHZ,
@@ -238,6 +232,13 @@ extern const rcc_clock_conf rcc_hse_25mhz_3v3[1];
 
 void rcc_hsi_clock_setup();
 void rcc_clock_pll_setup(const pll_config_e config_select);
+void rcc_configure_pll(const uint32_t m_div, const uint32_t n_mul, 
+                       const uint32_t p_div, const uint32_t q_div,
+                       const uint32_t pll_src);
+void rcc_set_periph_prescalers(const uint32_t hpre, 
+                               const uint32_t ppre1, const uint32_t ppre2);
+void rcc_set_sysclk_source(uint32_t clk);
+void rcc_wait_for_sysclk_status(const rcc_clock_src_e osc);
 void rcc_enable_peripherals(const periph_clk_config_t *config);
 void rcc_set_sysclk_src(const uint32_t clk);
 void rcc_periph_clock_enable(enum rcc_periph_clken clken);

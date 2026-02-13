@@ -1,8 +1,9 @@
 #ifndef IO_H
 #define IO_H
 
-#include "stm32f401xc.h"
 #include <stdint.h>
+
+#include "defines.h"
 
 typedef enum {
   // This will be multiplied by 2 to get position in GPIOx_MODER

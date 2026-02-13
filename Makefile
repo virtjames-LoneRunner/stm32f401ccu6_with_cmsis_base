@@ -18,6 +18,8 @@ LDFLAGS = -T ${LINKER_FILE} -Wl,--gc-sections -nostdlib
 BUILDDIR = build
 SRCS_WITH_HEADERS = src/drivers/io.c \
 										src/drivers/rcc.c \
+										src/drivers/flash.c \
+										src/drivers/pwr.c \
 										src/test/init.test.c
 
 SRCS = $(wildcard src/*.c) \
