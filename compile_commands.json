@@ -67,6 +67,31 @@
       "-I./src/app",
       "-c",
       "-o",
+      "build/common/utils.o",
+      "src/common/utils.c"
+    ],
+    "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/common/utils.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/common/utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mthumb",
+      "-O0",
+      "-g3",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DSTM32F401xC",
+      "-I./external/CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./external/CMSIS/Core/Include",
+      "-I./external/printf",
+      "-I./src/common",
+      "-I./src/drivers",
+      "-I./src/app",
+      "-c",
+      "-o",
       "build/drivers/io.o",
       "src/drivers/io.c"
     ],
@@ -117,11 +142,61 @@
       "-I./src/app",
       "-c",
       "-o",
-      "build/app/mcu_init.o",
-      "src/app/mcu_init.c"
+      "build/drivers/flash.o",
+      "src/drivers/flash.c"
     ],
     "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
-    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/app/mcu_init.c",
-    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/app/mcu_init.o"
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/drivers/flash.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/drivers/flash.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mthumb",
+      "-O0",
+      "-g3",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DSTM32F401xC",
+      "-I./external/CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./external/CMSIS/Core/Include",
+      "-I./external/printf",
+      "-I./src/common",
+      "-I./src/drivers",
+      "-I./src/app",
+      "-c",
+      "-o",
+      "build/drivers/pwr.o",
+      "src/drivers/pwr.c"
+    ],
+    "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/drivers/pwr.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/drivers/pwr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/arm-none-eabi-gcc",
+      "-mcpu=cortex-m4",
+      "-mthumb",
+      "-O0",
+      "-g3",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-DSTM32F401xC",
+      "-I./external/CMSIS/Device/ST/STM32F4xx/Include",
+      "-I./external/CMSIS/Core/Include",
+      "-I./external/printf",
+      "-I./src/common",
+      "-I./src/drivers",
+      "-I./src/app",
+      "-c",
+      "-o",
+      "build/test/init.test.o",
+      "src/test/init.test.c"
+    ],
+    "directory": "/home/james/dev/projects/hw/cmsis_blackpill",
+    "file": "/home/james/dev/projects/hw/cmsis_blackpill/src/test/init.test.c",
+    "output": "/home/james/dev/projects/hw/cmsis_blackpill/build/test/init.test.o"
   }
 ]
