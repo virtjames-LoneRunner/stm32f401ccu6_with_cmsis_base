@@ -37,4 +37,6 @@ void io_set_out(GPIO_TypeDef *port, const uint32_t pin_mask, const io_out_e stat
   // Shift registers to second set of 16 bits if reset
   port->BSRR = (pin_mask << shift); 
 } 
-io_in_e io_get_input();
+io_in_e io_get_input() {
+  return 0;
+}

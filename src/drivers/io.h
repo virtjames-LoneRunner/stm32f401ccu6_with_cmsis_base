@@ -35,16 +35,14 @@ typedef enum {
   IO_MASK_15          = (1U << IO15),
 } io_pin_mask_e;
 
-typedef enum
-{
+typedef enum {
   IO_MODE_INPUT       = 0x0,
   IO_MODE_OUTPUT      = 0x1,
   IO_MODE_ALTERNATE   = 0x2,
   IO_MODE_ANALOG      = 0x3,
 } io_mode_e;
 
-typedef enum
-{
+typedef enum {
   IO_OTYPE_PP        = 0x0,  // PUSH PULL
   IO_OTYPE_OD        = 0x1,  // OPEN DRAIN
 } io_otype_e;
