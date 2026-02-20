@@ -1,4 +1,6 @@
 #include "io.h"
+#include "stm32f401xc.h"
+#include <stdint.h>
 
 void io_configure_pin(GPIO_TypeDef *port, const uint32_t pin, const io_pin_config_t *config) {
   port->MODER &= ~(3U << (pin * 2U));
@@ -32,11 +34,11 @@ void io_toggle_pin(GPIO_TypeDef *port, const uint32_t pin) {
 void io_set_select();
 void io_set_direction();
 void io_set_resistor();
-void io_set_out(GPIO_TypeDef *port, const uint32_t pin_mask, const io_out_e state) {
+void io_set_out(GPIO_TypeDef *port, const uint32_t pin, const io_out_e state) {
   uint32_t shift = (state == IO_OUT_LOW) ? 0 : 16;
   // Shift registers to second set of 16 bits if reset
-  port->BSRR = (pin_mask << shift); 
+  port->BSRR = ((1U << pin) << shift); 
 } 
-io_in_e io_get_input() {
+io_in_e io_get_input(GPIO_TypeDef *port, const uint32_t pin) {
   return 0;
 }

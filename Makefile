@@ -21,6 +21,7 @@ SRCS_WITH_HEADERS = src/drivers/io.c \
 										src/drivers/flash.c \
 										src/drivers/pwr.c \
 										src/drivers/dma.c \
+										src/drivers/exti.c \
 										src/test/init.test.c
 
 SRCS = $(wildcard src/*.c) \
@@ -66,8 +67,8 @@ cppcheck:
 		-i./external/printf \
 		--suppress=*:src/startup_stm32.c \
 		--suppress=missingInclude \
-		--suppress=checkersReport \
-		--suppress=missingIncludeSystem \
 		--suppress=unusedFunction \
 		$(SRCS) 
 
+		# --suppress=checkersReport \
+		# --suppress=missingIncludeSystem \
