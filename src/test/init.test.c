@@ -5,8 +5,7 @@
 
 volatile static bool enableLED = false;
 
-__attribute__((interrupt))
-void EXTI0_Handler() {
+void EXTI0_IRQHandler(void) {
   enableLED = true;
   exti_clear_pending(EXTI_0);
 }
@@ -49,11 +48,8 @@ void init_mcu(void) {
 
   io_set_out(GPIOC, IO13, IO_OUT_LOW);
 
-  exti_configure(EXTI_0, EXTI_SOURCE_PORTA);
+  exti_configure(EXTI_0, EXTI_SOURCE_PORTA, EXTI_TRIG_RISING);
   exti_set_interrupt_mask(EXTI_0, EXTI_STATE_ENABLED);
-  exti_set_rising_trig(EXTI_0, EXTI_STATE_ENABLED);
-  exti_clear_pending(EXTI_0);
-  // exti_set_falling_trig(EXTI_0, EXTI_STATE_ENABLED);
   // NVIC_SetPriority(EXTI0_IRQn, 2); // Set priority (0 is highest)
   NVIC_EnableIRQ(EXTI0_IRQn);
 }
@@ -64,7 +60,7 @@ void init_test(uint32_t *srcAddr, uint32_t *dstAddr, uint16_t length) {
   while(1) {
     if (enableLED) {
       io_set_out((GPIO_TypeDef *)GPIOC_BASE, IO13, IO_OUT_HIGH);
-      delay(100000000);
+      delay(10000000);
       io_set_out((GPIO_TypeDef *)GPIOC_BASE, IO13, IO_OUT_LOW);
       enableLED = false;
     }

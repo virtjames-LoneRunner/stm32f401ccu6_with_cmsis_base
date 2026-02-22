@@ -48,7 +48,13 @@ typedef enum {
 } exti_state_e;
 
 
-void exti_configure(const exti_line_e line, const exti_source_e source);
+typedef enum {
+  EXTI_TRIG_RISING    = 0x1,
+  EXTI_TRIG_FALLING   = 0x2,
+  EXTI_TRIG_SOFTWARE  = 0x4,
+} exti_trigger_e;
+
+void exti_configure(const exti_line_e line, const exti_source_e source, const exti_trigger_e trigger);
 void exti_set_interrupt_mask(const exti_line_e line, const exti_state_e state);
 void exti_set_event_mask(const exti_line_e line, const exti_state_e state);
 
